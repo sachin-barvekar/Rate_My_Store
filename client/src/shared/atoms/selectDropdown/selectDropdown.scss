@@ -1,0 +1,53 @@
+@use '../../../scss/abstracts/variables' as *;
+
+.select-picker {
+  &.rs-picker-disabled {
+    opacity: 1;
+  }
+
+  &.bordered {
+    .rs-picker-toggle {
+      --rs-input-bg: #{$color-white};
+      --rs-text-secondary: #{$text-color-primary};
+      --rs-picker-value: #{$text-color-primary};
+
+      &.rs-btn-disabled {
+        --rs-input-disabled-bg: #{$color-white};
+        --rs-border-primary: #{$text-color-lighter};
+        --rs-input-disabled-text: #{$text-color-lighter};
+      }
+    }
+  }
+
+  .rs-picker-toggle {
+    border-radius: 1rem;
+    height: 32px;
+    min-width: 132px;
+    --rs-input-bg: #{$text-color-primary};
+    --rs-border-primary: #{$text-color-primary};
+    --rs-text-secondary: #{$color-white};
+    --rs-picker-value: #{$color-white};
+    --rs-btn-default-hover-text: #{$color-white};
+
+    &.rs-btn-disabled {
+      --rs-input-disabled-bg: #{$text-color-lighter};
+      --rs-border-primary: #{$text-color-lighter};
+      --rs-input-disabled-text: #{$color-white};
+    }
+
+    .rs-picker-toggle-indicator .rs-picker-caret-icon,
+    .rs-picker-toggle-indicator .rs-picker-clean {
+      height: 17px;
+    }
+  }
+
+  &.lighter {
+    .rs-picker-toggle {
+      --rs-input-bg: #{$text-color-lighter};
+      --rs-border-primary: #{$text-color-lighter};
+      --rs-text-secondary: #{$color-white};
+      --rs-picker-value: #{$color-white};
+      --rs-btn-default-hover-text: #{$color-white};
+    }
+  }
+}

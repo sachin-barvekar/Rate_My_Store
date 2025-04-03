@@ -1,0 +1,25 @@
+@use '../../../scss/abstracts/variables' as *;
+
+.checkbox {
+  padding: 0.5rem;
+  border-bottom: 1px solid $divider-color;
+
+  &__label {
+    padding: 0.5rem;
+    font-size: 14px;
+    color: $text-color-light;
+    font-weight: 400;
+  }
+}
+
+.multi-select-checkbox {
+  &.vertical {
+    display: block;
+  }
+
+  &.horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}

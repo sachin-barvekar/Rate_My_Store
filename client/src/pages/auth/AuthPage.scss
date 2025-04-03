@@ -1,0 +1,194 @@
+@use '../../scss/abstracts/colors' as *;
+@use '../../scss/abstracts/variables' as *;
+
+.login_page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f7fafd;
+
+  .login_page_container {
+    height: 85vh;
+    width: 70%;
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+
+    .left_side {
+      padding: 30px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .auth-title {
+        text-align: center;
+        font-size: 1.45rem;
+        margin-bottom: 0.5rem;
+        color: var(--rs-gray-900);
+      }
+
+      .auth-subtitle {
+        text-align: center;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: var(--rs-gray-600);
+      }
+
+      .form {
+        margin-top: 0.8rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        overflow-y: auto;
+        height: 65%;
+
+        .formfield_container {
+          width: 100%;
+        }
+
+        .rs-col {
+          margin-bottom: 0.5rem;
+        }
+
+        .rs-message-container {
+          padding: 12px 15px;
+        }
+
+        .select-picker {
+          width: 100%;
+
+          .rs-picker-toggle {
+            height: 40px;
+            background-color: white !important;
+            border-radius: 8px;
+            border-color: var(--rs-gray-400);
+
+            &:hover {
+              border-color: $button-background-color-primary;
+            }
+          }
+
+          .rs-picker-toggle-placeholder {
+            color: var(--rs-gray-600) !important;
+          }
+
+          .rs-picker-caret-icon {
+            top: 0.8rem !important;
+            color: var(--rs-gray-600) !important;
+          }
+
+          .rs-btn-close {
+            top: 0.8rem !important;
+          }
+
+          .rs-picker-toggle-value,
+          .rs-picker-has-value .rs-picker-toggle .rs-picker-toggle-value {
+            color: var(--rs-gray-600) !important;
+          }
+        }
+
+        .rs-input-group.rs-input-group-inside {
+          height: 40px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+        }
+
+        .auth-buttons {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 1rem;
+
+          button {
+            width: 48%;
+            height: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+          }
+
+          .rs-btn-primary {
+            background-color: var(--rs-primary-400);
+            color: var(--white);
+
+            &:hover {
+              background-color: var(--rs-primary-300);
+            }
+          }
+
+          .rs-btn-ghost {
+            background-color: transparent;
+            color: var(--rs-gray-600);
+            border: 1px solid var(--rs-gray-400);
+
+            &:hover {
+              background-color: var(--rs-gray-100);
+            }
+          }
+        }
+
+        .register_btn {
+          text-align: center;
+          margin-top: 1rem;
+          font-size: 0.875rem;
+          color: var(--rs-gray-700);
+
+          button {
+            background: none;
+            border: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            top: -1px;
+            padding: 0;
+            color: var(--rs-primary-500);
+            cursor: pointer;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .right_side {
+      width: 50%;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        height: 100%;
+        width: 100%;
+        border-radius: 0 20px 20px 0;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .login_page_container {
+    justify-content: center;
+    width: 100% !important;
+    height: 100%;
+
+    .left_side {
+      width: 80% !important;
+      padding: 20px;
+    }
+
+    .right_side {
+      display: none !important;
+    }
+  }
+}

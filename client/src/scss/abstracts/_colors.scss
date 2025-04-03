@@ -1,0 +1,67 @@
+@use 'variables' as *;
+
+:root {
+  --text-color: #{$text-color-primary};
+  --text-color-secondary: #{$text-color-secondary};
+  --background-color-lighter-200: #{$background-color-lighter-200};
+  --background-color-darker: #{$background-color-darker};
+  --border-color: #d4e2ef;
+
+  --color-white: #fff;
+  --color-dark: #212121;
+  --color-steelblue-100: #ef9a9a;
+  --color-steelblue-200: #c62828;
+  --gray-50: #f5e6e6;
+  --gray-700: #b71c1c;
+  --white: #fff;
+  --san-juan: #d32f2f;
+  --alabaster: #f8f9fa;
+  --athens-gray: #f1e4e4;
+  --wild-sand: #f2e4e4;
+
+  --caption-size: 12px;
+  --font-size-sm: 14px;
+  --font-medium-size: 16px;
+  --font-size-l: 14px;
+  --font-size-m: 12px;
+  --font-size-xl: 20px;
+  --font-size-xxl: 24px;
+
+  --padding-xl: 20px;
+  --padding-mid: 17px;
+  --padding-23xl: 42px;
+  --padding-xs: 12px;
+  --padding-33xl: 52px;
+  --padding-11xs: 2px;
+  --padding-9xs: 4px;
+  --padding-12xs: 1px;
+  --padding-3xs: 10px;
+  --padding-28xl: 47px;
+  --padding-18xl: 37px;
+  --padding-5xs: 8px;
+  --padding-7xs: 6px;
+  --padding-29xl: 48px;
+  --padding-10xs: 3px;
+  --padding-4xs: 9px;
+  --padding-3xl: 22px;
+  --padding-base: 16px;
+  --padding-2xs: 11px;
+  --padding-15xl: 34px;
+  --padding-797xl: 816px;
+  --padding-lg: 18px;
+  --padding-2xl: 21px;
+}
+
+:root,
+.rs-theme-light {
+  --rs-primary-50: #fae6e6;
+  --rs-primary-100: #f5cccc;
+  --rs-primary-200: #eb9999;
+  --rs-primary-300: #e06666;
+  --rs-primary-400: #d63232;
+  --rs-primary-500: #b71c1c;
+  --rs-primary-600: #9e1919;
+  --rs-primary-700: #851515;
+  --rs-primary-800: #6c1212;
+  --rs-primary-900: #530e0e;
+}

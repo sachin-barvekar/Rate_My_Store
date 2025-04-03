@@ -1,0 +1,20 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+
+  .rs-content {
+    padding: 1rem 2rem;
+    overflow-y: auto;
+    height: calc(100vh - 6rem);
+  }
+
+  .rs-panel {
+    background: #fff;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout .rs-content {
+    padding: 0.5rem;
+  }
+}

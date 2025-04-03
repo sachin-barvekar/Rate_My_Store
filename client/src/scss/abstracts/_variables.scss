@@ -1,0 +1,48 @@
+@use 'sass:color';
+
+$primary-color: #b71c1c;
+$secondary-color: #424242;
+
+$text-color-primary: #181818;
+$text-color-secondary: #181818;
+$text-color-lighter: #e57373;
+$dropdown-divider-color: #f2f4f6;
+$text-color-lighter-2: #f44336;
+$text-color-heading: #d32f2f;
+$text-color-content: #c62828;
+$text-light-grey: #bdbdbd;
+$text-dark-grey: #757575;
+$text-color-light: #e0e0e0;
+$text-color-lighter-3: #ef9a9a;
+$text-color-background: #f8f9fa;
+$text-color-helper: #b71c1c;
+$text-color-green: #5ea650;
+$text-color-orange: #ff9e3d;
+$text-color-green-2: #e3ffe7;
+
+$button-color-primary-gradient-start: color.adjust(
+  $primary-color,
+  $lightness: 10%
+);
+$button-color-primary: $primary-color;
+$button-background-color-subtle: color.adjust($primary-color, $lightness: 85%);
+$button-background-color-lighter: color.adjust($primary-color, $lightness: 60%);
+$button-color-subtle: color.adjust($primary-color, $lightness: 30%);
+$button-background-color-primary: $primary-color;
+$button-background-color-secondary: $secondary-color;
+$button-color-primary-default: color.adjust($primary-color, $lightness: 75%);
+$button-border-color: color.adjust($primary-color, $lightness: 70%);
+
+$background-color-darker: #e9edf5;
+$background-color-lighter-200: #f3f6f8;
+$background-color-lighter: color.adjust($primary-color, $lightness: 50%);
+$background-color-darker-2: color.adjust($primary-color, $lightness: -20%);
+
+$divider-color: var(--rs-gray-400);
+$toolbar-border-bottom-color: color.adjust($primary-color, $lightness: 85%);
+$border-color: color.adjust($primary-color, $lightness: 50%);
+$border-color-darker: color.adjust($primary-color, $lightness: -30%);
+
+$color-white: #fff;
+$color-black: #000;
+$dropdown-divider-color: color.adjust($primary-color, $lightness: 90%);

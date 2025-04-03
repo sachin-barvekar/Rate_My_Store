@@ -1,0 +1,43 @@
+import { Field } from 'formik'
+import { FormikSelectInputs } from './interfaces'
+
+function Select<V>(props: Readonly<FormikSelectInputs<V>>): React.ReactElement {
+  const { formik, name, inputProps } = props
+  const items =
+    inputProps?.selectOptions ||
+    inputProps?.allowedValue?.map((value) => {
+      return {
+        label: value,
+        value
+      }
+    }) ||
+    []
+
+  return (
+    <Field
+      as="select"
+      name={name}
+      data-testid={name}
+      disabled={inputProps?.isDisabled}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      value={(formik?.values as Record<string, any>)[name] || ''}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      onChange={(e: React.ChangeEvent<any>) => {
+        formik?.setFieldValue(name, e?.target?.value)
+      }}
+    >
+      <option key="Select" value="">
+        Select
+      </option>
+      {items.map((entry) => {
+        return (
+          <option key={entry.value} value={entry.value}>
+            {entry?.label}
+          </option>
+        )
+      })}
+    </Field>
+  )
+}
+
+export default Select

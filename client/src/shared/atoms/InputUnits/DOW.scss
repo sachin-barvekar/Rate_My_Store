@@ -1,0 +1,25 @@
+@use '../../../scss/abstracts/variables' as *;
+
+.dow-container {
+  display: flex;
+  gap: 10px;
+
+  .day-button {
+    padding: 10px;
+    background-color: $button-background-color-lighter;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 38px;
+  }
+
+  .selectedDay {
+    background-color: $button-background-color-primary;
+    color: $color-white;
+  }
+
+  .disabledDay {
+    cursor: not-allowed;
+  }
+}
+
