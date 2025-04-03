@@ -1,0 +1,32 @@
+@use '../../../scss/abstracts/variables' as *;
+
+.modal--secondary {
+  .rs-modal-content {
+    padding: 0;
+  }
+
+  .rs-modal-header {
+    padding: 15px;
+    border-radius: 6px 6px 0 0;
+    background-color: $button-color-primary;
+
+    .rs-modal-header-close {
+      color: $color-white;
+      font-size: 14px;
+    }
+  }
+
+  .rs-modal-title {
+    color: $color-white;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .rs-modal-body {
+    margin-top: 0;
+  }
+}
+.rs-modal-wrapper {
+  display: flex;
+  align-items: center;
+}

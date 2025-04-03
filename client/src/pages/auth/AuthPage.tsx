@@ -12,9 +12,11 @@ import { FormikErrorMessage, SelectDropdown, TextInput } from '../../shared'
 import EyeCloseIcon from '@rsuite/icons/EyeClose'
 import EyeRoundIcon from '@rsuite/icons/EyeRound'
 import useAuth from '../../hooks/Auth'
+import { useNavigate } from 'react-router-dom'
 
 const AuthPage = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false)
+  const navigate = useNavigate()
   const { NAME, EMAIL, PASSWORD, ADDRESS, ROLE } = AUTH_FORM_FIELDS
   const [visible, setVisible] = useState(false)
   const { login, signup } = useAuth()
@@ -37,6 +39,7 @@ const AuthPage = () => {
         )
       } else {
         await login(formValues.email, formValues.password)
+        navigate('/')
       }
     } catch (error) {
       console.error('Authentication failed', error)

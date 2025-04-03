@@ -1,0 +1,80 @@
+@use '../../../scss/abstracts/variables' as *;
+
+.header {
+  background-color: $color-white;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid $border-color;
+  padding: 0.7rem;
+
+  .menu-button {
+    background-color: $color-white;
+    color: $color-black !important;
+
+    &:hover {
+      background-color: $color-white;
+    }
+
+    &:active {
+      background-color: $color-white;
+    }
+
+    &:focus {
+      background-color: $color-white;
+    }
+  }
+
+  .rs-nav-item {
+    color: $color-black !important;
+  }
+
+  .rs-nav .rs-dropdown > .rs-dropdown-toggle {
+    color: $color-black !important;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &:active {
+      background-color: transparent;
+    }
+
+    &:focus {
+      background-color: transparent;
+    }
+  }
+  .header_logo {
+    color: #b71c1c;
+  }
+
+  &__user {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+
+    .rs-nav-item {
+      color: $color-black !important;
+      font-size: 1.3rem;
+    }
+
+    &__user {
+      gap: 1.4rem;
+    }
+  }
+}
+
+.popover-content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  .popover-username {
+    color: $color-black;
+    margin-bottom: 8px;
+  }
+}

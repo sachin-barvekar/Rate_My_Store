@@ -1,1 +1,5 @@
-export {}
+export { default as Header } from './header/Header'
+export { default as Footer } from './footer/Footer'
+export { default as SideNav } from './sideNav/SideNav'
+export { default as Modal } from './modal/Modal'
+export { default as ConfirmModal } from './modal/ConfirmModal'
