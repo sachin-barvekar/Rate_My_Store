@@ -112,7 +112,7 @@ const AuthPage = () => {
                         <TextInput
                           formik={formikProps}
                           name={PASSWORD}
-                          placeholder='Enter Your Password'
+                          placeholder='Enter your password'
                           dataType={visible ? 'string' : 'password'}
                         />
                         <InputGroup.Button onClick={handleChange}>

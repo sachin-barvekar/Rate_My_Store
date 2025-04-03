@@ -16,6 +16,8 @@
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
+    align-items: center;
+    justify-content: center;
 
     .left_side {
       padding: 30px;
@@ -178,9 +180,8 @@
 
 @media screen and (max-width: 968px) {
   .login_page_container {
-    justify-content: center;
     width: 100% !important;
-    height: 100%;
+    height: 100% !important;
 
     .left_side {
       width: 80% !important;
