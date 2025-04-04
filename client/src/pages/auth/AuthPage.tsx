@@ -37,6 +37,7 @@ const AuthPage = () => {
           formValues.address,
           formValues.role,
         )
+        setIsSignUpMode(false)
       } else {
         await login(formValues.email, formValues.password)
         navigate('/')
@@ -147,7 +148,7 @@ const AuthPage = () => {
                               { label: 'Store Owner', value: 'store_owner' },
                               { label: 'User', value: 'user' },
                             ]}
-                            placeholder='Select Company'
+                            placeholder='Select Role'
                             value={formikProps.values[ROLE]}
                             onChange={value =>
                               formikProps.setFieldValue(ROLE, value)

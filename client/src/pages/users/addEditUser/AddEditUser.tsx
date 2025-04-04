@@ -37,7 +37,6 @@ const AddEditUser: React.FC<Props> = ({
   userData,
   isEditMode,
 }) => {
-  console.log('userData', userData)
   const [visible, setVisible] = useState(false)
   const { NAME, EMAIL, PASSWORD, ROLE, ADDRESS } = AUTH_FORM_FIELDS
 

@@ -7,6 +7,7 @@ import RouteGuard from '../guards/RouteGuard'
 import HomePage from '../pages/home'
 import Logout from '../pages/auth/Logout'
 import UserList from '../pages/users/userList/UserList'
+import StoreList from '../pages/store/storeList/StoreList'
 
 const appRouter = () =>
   createBrowserRouter([
@@ -45,6 +46,14 @@ const appRouter = () =>
               element: (
                 <RouteGuard requiredRoles={['admin']}>
                   <UserList />
+                </RouteGuard>
+              ),
+            },
+            {
+              path: '/stores',
+              element: (
+                <RouteGuard requiredRoles={['admin']}>
+                  <StoreList />
                 </RouteGuard>
               ),
             },
