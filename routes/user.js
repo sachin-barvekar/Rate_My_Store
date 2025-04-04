@@ -9,19 +9,21 @@ const {
   getAllStores,
   createStore,
   updateStore,
+  updateStoreRating,
 } = require('../controller/store.controller')
 
 router.post('/auth/signup', signup)
 router.post('/auth/login', login)
 
-router.get('/users', auth, isAdmin, getAllUsers)
-router.post('/user/add', auth, isAdmin, signup)
-router.patch('/user/edit/:id', auth, isAdmin, updateUser)
+router.get('/users', auth, getAllUsers)
+router.post('/user/add', auth, signup)
+router.patch('/user/edit/:id', auth, updateUser)
 
 router.get('/dashboard/admin', auth, isAdmin, dashboardCount)
 
-router.get('/stores', auth, isAdmin, getAllStores)
-router.post('/store/add', auth, isAdmin, createStore)
-router.patch('/store/edit/:id', auth, isAdmin, updateStore)
+router.get('/stores', auth, getAllStores)
+router.post('/store/add', auth, createStore)
+router.patch('/store/edit/:id', auth, updateStore)
+router.patch('/stores/:id/rating', auth, updateStoreRating)
 
 module.exports = router

@@ -3,7 +3,7 @@ import dashboardApi from '../../api/dashboardApi'
 const dashboardApiSlice = dashboardApi.injectEndpoints({
   endpoints: build => ({
     adminDashboardCount: build.query<
-      { totalUsers: number; totalStore: number },
+      { totalUsers: number; totalStore: number; totalSubmittedRatings: number },
       void
     >({
       query: () => ({

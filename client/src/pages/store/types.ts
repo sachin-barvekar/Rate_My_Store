@@ -1,10 +1,10 @@
 export interface Store {
   _id?: string
-  name: string
-  email: string
-  address: string
+  name?: string
+  email?: string
+  address?: string
   rating?: Record<string, number>
-  storeOwner: string
+  storeOwner?: string
   search?: string
   storeOwnerId?: string
 }

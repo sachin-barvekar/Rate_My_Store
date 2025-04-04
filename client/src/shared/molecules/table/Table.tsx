@@ -8,6 +8,7 @@ import {
   StatusCell,
   ActionCell,
   ProfileIconCell,
+  RatingCell,
 } from './cells'
 import TableFooter from './footer/TableFooter'
 import './Table.scss'
@@ -123,6 +124,7 @@ Table.HeaderCell = HeaderCell
 Table.ActionCell = ActionCell
 Table.StatusCell = StatusCell
 Table.ProfileIconCell = ProfileIconCell
+Table.RatingCell = RatingCell
 Table.DEFAULT_PAGE_SIZE = DEFAULT_PAGE_SIZE
 
 export default Table

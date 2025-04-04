@@ -28,7 +28,7 @@
     color: $color-black !important;
   }
 
-  .rs-nav .rs-dropdown > .rs-dropdown-toggle {
+  .rs-nav .rs-dropdown>.rs-dropdown-toggle {
     color: $color-black !important;
 
     &:hover {
@@ -42,9 +42,6 @@
     &:focus {
       background-color: transparent;
     }
-  }
-  .header_logo {
-    color: #b71c1c;
   }
 
   &__user {
@@ -77,4 +74,8 @@
     color: $color-black;
     margin-bottom: 8px;
   }
+}
+
+.header_logo {
+  color: #b71c1c;
 }

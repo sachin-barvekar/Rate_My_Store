@@ -3,6 +3,7 @@ import { Cell } from 'rsuite-table'
 import EditIcon from '@rsuite/icons/Edit'
 import TrashIcon from '@rsuite/icons/Trash'
 import VisibleIcon from '@rsuite/icons/Visible'
+import { MdStarBorderPurple500 } from 'react-icons/md'
 import { Whisper, Tooltip } from 'rsuite'
 import './ActionCell.scss'
 
@@ -20,6 +21,8 @@ const defaultOptions = [
   { label: 'View', eventKey: '1', icon: <VisibleIcon /> },
   { label: 'Edit', eventKey: '2', icon: <EditIcon /> },
   { label: 'Delete', eventKey: '3', icon: <TrashIcon /> },
+  { label: 'Update Rating', eventKey: '4', icon: <MdStarBorderPurple500 /> },
+  {},
 ]
 
 const ActionCell: React.FC<Props> = ({
@@ -31,7 +34,9 @@ const ActionCell: React.FC<Props> = ({
 }) => {
   const optionsToDisplay =
     actionOptions.length > 0
-      ? defaultOptions.filter(option => actionOptions.includes(option.label))
+      ? defaultOptions.filter(
+          option => option.label && actionOptions.includes(option.label),
+        )
       : defaultOptions
 
   const handleActionClick = (

@@ -52,7 +52,7 @@ const appRouter = () =>
             {
               path: '/stores',
               element: (
-                <RouteGuard requiredRoles={['admin']}>
+                <RouteGuard requiredRoles={['admin', 'user']}>
                   <StoreList />
                 </RouteGuard>
               ),

@@ -7,6 +7,7 @@ export enum STORE_FORM_FIELDS {
   EMAIL = 'email',
   ADDRESS = 'address',
   STORE_OWNER = 'storeOwner',
+  STORE_RATING = 'rating',
 }
 
 export interface IStoreForm {
@@ -14,6 +15,7 @@ export interface IStoreForm {
   [STORE_FORM_FIELDS.EMAIL]: string
   [STORE_FORM_FIELDS.ADDRESS]: string
   [STORE_FORM_FIELDS.STORE_OWNER]: string
+  [STORE_FORM_FIELDS.STORE_RATING]: Record<string, number> | undefined
 }
 
 export const getInitialStoreFormValueFromResponse = (
@@ -23,6 +25,7 @@ export const getInitialStoreFormValueFromResponse = (
   [STORE_FORM_FIELDS.EMAIL]: store?.email ?? '',
   [STORE_FORM_FIELDS.ADDRESS]: store?.address ?? '',
   [STORE_FORM_FIELDS.STORE_OWNER]: store?.storeOwnerId ?? '',
+  [STORE_FORM_FIELDS.STORE_RATING]: store?.rating ?? { ['']: 0 },
 })
 
 export const defaultStoreFormValues: IStoreForm = {
@@ -30,6 +33,7 @@ export const defaultStoreFormValues: IStoreForm = {
   [STORE_FORM_FIELDS.EMAIL]: '',
   [STORE_FORM_FIELDS.ADDRESS]: '',
   [STORE_FORM_FIELDS.STORE_OWNER]: '',
+  [STORE_FORM_FIELDS.STORE_RATING]: {}, // Ensure it's an object
 }
 
 export const storeValidationSchema = () => {

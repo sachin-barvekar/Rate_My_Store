@@ -158,3 +158,49 @@ exports.updateStore = async (req, res) => {
     })
   }
 }
+
+exports.updateStoreRating = async (req, res) => {
+  try {
+    const { id } = req.params
+    const storeId = id
+    const rating = req.body.rating
+
+    const userId = Object.keys(rating)[0]
+    const value = rating[userId]
+
+    if (!userId || !value) {
+      return res
+        .status(400)
+        .json({ message: 'User ID and rating value are required' })
+    }
+
+    if (value < 1 || value > 5) {
+      return res
+        .status(400)
+        .json({ message: 'Rating value must be between 1 and 5' })
+    }
+    const store = await Store.findById(storeId)
+    if (!store) {
+      return res.status(404).json({ message: 'Store not found' })
+    }
+
+    const existingRating = store.rating.find(
+      r => r.userId.toString() === userId,
+    )
+
+    if (existingRating) {
+      existingRating.value = value
+    } else {
+      store.rating.push({ userId, value })
+    }
+
+    await store.save()
+
+    return res
+      .status(200)
+      .json({ success: true, message: 'Rating updated successfully', store })
+  } catch (error) {
+    console.error('Error updating store rating:', error)
+    res.status(500).json({ success: true, message: 'Internal server error' })
+  }
+}

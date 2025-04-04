@@ -78,7 +78,6 @@ const AddEditStore: React.FC<Props> = ({
   ) => {
     try {
       if (isEditMode && storeData?._id) {
-        console.log('storeid', storeData._id)
         const response = await updateStore({
           id: storeData._id,
           store: formValues,

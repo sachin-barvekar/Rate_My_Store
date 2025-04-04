@@ -74,7 +74,13 @@ const AuthPage = () => {
       <div className='login_page_container'>
         <div className='left_side'>
           <h2 className='auth-title'>
-            {isSignUpMode ? 'Create Account' : 'Welcome Back to RateMYStore'}
+            {isSignUpMode ? (
+              'Create Account'
+            ) : (
+              <>
+                Welcome Back to <span className='header_logo'>RateMY</span>Store
+              </>
+            )}
           </h2>
           <p className='auth-subtitle'>
             {isSignUpMode ? 'Sign up to continue' : 'Login to your account'}

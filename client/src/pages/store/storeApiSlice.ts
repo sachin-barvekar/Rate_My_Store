@@ -27,9 +27,23 @@ const StoreApiSlice = storeApi.injectEndpoints({
       }),
       invalidatesTags: ['store'],
     }),
-    updateStore: build.mutation<void, { id: string; store: Partial<Store> }>({
+    updateStore: build.mutation<
+      IListApiResponse<Store>,
+      { id: string; store: Partial<Store> }
+    >({
       query: ({ id, store }) => ({
         url: `/store/edit/${id}`,
+        method: 'PATCH',
+        data: store,
+      }),
+      invalidatesTags: ['store'],
+    }),
+    updateStoreRating: build.mutation<
+      void,
+      { id: string; store: Partial<Store> }
+    >({
+      query: ({ id, store }) => ({
+        url: `/stores/${id}/rating`,
         method: 'PATCH',
         data: store,
       }),
@@ -42,4 +56,5 @@ export const {
   useFetchStoreListQuery,
   useCreateStoreMutation,
   useUpdateStoreMutation,
+  useUpdateStoreRatingMutation,
 } = StoreApiSlice

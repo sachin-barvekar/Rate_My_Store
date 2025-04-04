@@ -30,7 +30,7 @@ const AdminHome: React.FC = () => {
           bordered
           className='stat-card'
           icon={<StarIcon color='#FF9800' className='stat-icon' />}>
-          <Stat.Value>50</Stat.Value>
+          <Stat.Value>{data?.totalSubmittedRatings}</Stat.Value>
           <Stat.Label>Total Ratings Submitted</Stat.Label>
         </Stat>
       </StatGroup>

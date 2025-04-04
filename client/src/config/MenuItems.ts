@@ -39,7 +39,7 @@ const menuItems: MenuItemType[] = [
     name: 'Stores',
     link: '/stores',
     icon: FaStore,
-    roles: ['admin'],
+    roles: ['admin', 'user'],
   },
 ]
 
