@@ -6,6 +6,7 @@ import AuthPage from '../pages/auth/AuthPage'
 import RouteGuard from '../guards/RouteGuard'
 import HomePage from '../pages/home'
 import Logout from '../pages/auth/Logout'
+import UserList from '../pages/users/userList/UserList'
 
 const appRouter = () =>
   createBrowserRouter([
@@ -34,9 +35,16 @@ const appRouter = () =>
             {
               path: '/',
               element: (
-                <RouteGuard
-                  requiredRoles={['admin', 'user', 'store_owner']}>
+                <RouteGuard requiredRoles={['admin', 'user', 'store_owner']}>
                   <HomePage />
+                </RouteGuard>
+              ),
+            },
+            {
+              path: '/users',
+              element: (
+                <RouteGuard requiredRoles={['admin']}>
+                  <UserList />
                 </RouteGuard>
               ),
             },

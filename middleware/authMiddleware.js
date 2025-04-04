@@ -7,10 +7,7 @@ const sendResponse = (res, statusCode, success, message) => {
 
 exports.auth = (req, res, next) => {
   try {
-    const token =
-      req.body.token ||
-      req.cookies.auth_token ||
-      req.header('Authorization')?.replace('Bearer ', '')
+    const token = req.header('Authorization')?.replace('Bearer ', '')
 
     if (!token) {
       return sendResponse(
@@ -42,7 +39,7 @@ exports.isStoreOwner = (req, res, next) => {
 }
 
 exports.isNormalUser = (req, res, next) => {
-  if (req.user.role !== 'normal') {
+  if (req.user.role !== 'customer') {
     return sendResponse(res, 403, false, 'Access denied. Normal users only.')
   }
   next()

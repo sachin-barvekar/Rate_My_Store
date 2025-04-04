@@ -4,6 +4,8 @@ export interface User {
   email: string
   address: string
   role: string
+  search?: string
+  password?: string
 }
 
 export interface AuthResponse {

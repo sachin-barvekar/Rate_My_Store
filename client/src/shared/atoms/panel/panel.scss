@@ -1,0 +1,16 @@
+.panel {
+  &__header {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 2.1rem;
+  }
+
+  .rs-panel {
+    border-radius: 20px;
+  }
+
+  .rs-panel-body,
+  .rs-panel-header {
+    padding: 1.5rem;
+  }
+}

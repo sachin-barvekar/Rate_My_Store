@@ -1,0 +1,42 @@
+@use '../../../scss/abstracts/variables' as *;
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+  overflow-x: auto;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  height: calc(100vh - 17rem);
+  flex-grow: 1;
+
+  .rs-table {
+    word-wrap: break-word;
+    white-space: normal;
+    min-width: 100%;
+    width: auto;
+
+    .rs-table-row {
+      cursor: pointer !important;
+    }
+  }
+}
+
+.rsuite-table {
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .table-wrapper {
+    height: calc(100vh - 18rem);
+  }
+}
+
+@media (max-width: 468px) {
+  .table-wrapper {
+    height: calc(100vh - 20.5rem);
+  }
+}

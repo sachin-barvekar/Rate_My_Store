@@ -1,0 +1,35 @@
+@use '../../../../scss/abstracts/variables' as *;
+
+.link-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-icons-wrapper {
+  display: flex;
+  gap: 5px;
+}
+
+.action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0px 0px;
+  border-radius: 5px;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: var(--rs-gray-500);
+  color: white;
+
+  &:hover {
+    background-color: $text-color-primary;
+    color: white;
+  }
+}

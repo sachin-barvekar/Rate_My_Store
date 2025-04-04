@@ -79,13 +79,6 @@ exports.login = async (req, res) => {
     user = user.toObject()
     delete user.password
 
-    const cookieOptions = {
-      expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-    }
-
-    res.cookie('auth_token', token, cookieOptions)
     return res.status(200).json({
       success: true,
       message: 'Login successful.',

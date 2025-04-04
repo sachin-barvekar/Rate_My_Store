@@ -1,6 +1,7 @@
 import { HTMLAttributes } from 'react'
 import { AiOutlineHome } from 'react-icons/ai'
 import useAuth from '../hooks/Auth'
+import { FaUsers } from 'react-icons/fa'
 
 type SubMenuItemType = {
   id: string
@@ -25,6 +26,13 @@ const menuItems: MenuItemType[] = [
     link: '/',
     icon: AiOutlineHome,
     roles: ['admin', 'user', 'store_owner'],
+  },
+  {
+    id: '2',
+    name: 'Users',
+    link: '/users',
+    icon: FaUsers,
+    roles: ['admin'],
   },
 ]
 
