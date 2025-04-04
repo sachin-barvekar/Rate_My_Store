@@ -4,7 +4,7 @@ import AuthGuard from '../guards/AuthGuard'
 import AuthLayout from '../layouts/AuthLayout'
 import AuthPage from '../pages/auth/AuthPage'
 import RouteGuard from '../guards/RouteGuard'
-import { Home } from '../pages/home/Home'
+import HomePage from '../pages/home'
 import Logout from '../pages/auth/Logout'
 
 const appRouter = () =>
@@ -35,8 +35,8 @@ const appRouter = () =>
               path: '/',
               element: (
                 <RouteGuard
-                  requiredRoles={['admin', 'customer', 'store_owner']}>
-                  <Home />
+                  requiredRoles={['admin', 'user', 'store_owner']}>
+                  <HomePage />
                 </RouteGuard>
               ),
             },

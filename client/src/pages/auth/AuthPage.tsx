@@ -145,7 +145,7 @@ const AuthPage = () => {
                             data={[
                               { label: 'Admin', value: 'admin' },
                               { label: 'Store Owner', value: 'store_owner' },
-                              { label: 'Customer', value: 'customer' },
+                              { label: 'User', value: 'user' },
                             ]}
                             placeholder='Select Company'
                             value={formikProps.values[ROLE]}

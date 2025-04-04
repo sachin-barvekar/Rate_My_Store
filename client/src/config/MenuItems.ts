@@ -24,7 +24,7 @@ const menuItems: MenuItemType[] = [
     name: 'Dashboard',
     link: '/',
     icon: AiOutlineHome,
-    roles: ['admin', 'customer', 'store_owner'],
+    roles: ['admin', 'user', 'store_owner'],
   },
 ]
 

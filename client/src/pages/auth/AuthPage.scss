@@ -47,7 +47,7 @@
         flex-direction: column;
         gap: 1rem;
         overflow-y: auto;
-        height: 65%;
+        max-height: calc(80vh - 12rem);
 
         .formfield_container {
           width: 100%;
