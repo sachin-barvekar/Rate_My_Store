@@ -4,7 +4,9 @@
   "description": "\"# store_rating\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+		"build": "npm install --prefix ./client && npm run build --prefix ./client && npm install"
   },
   "keywords": [],
   "author": "",

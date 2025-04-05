@@ -1,4 +1,5 @@
 import { FormikProps } from 'formik'
+import { JSX } from 'react';
 import { DropdownProps, RadioGroupProps } from 'rsuite'
 
 export interface InputAs {
