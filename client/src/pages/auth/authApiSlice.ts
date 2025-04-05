@@ -1,6 +1,7 @@
 import authApi from '../../api/authApi'
+import { IListApiResponse } from '../../api/types'
 import { AuthResponse } from '../../contexts/types'
-import { LoginRequest, SignupRequest } from './types'
+import { LoginRequest, SignupRequest, ChangePassword } from './types'
 
 const authApiSlice = authApi.injectEndpoints({
   endpoints: build => ({
@@ -21,8 +22,23 @@ const authApiSlice = authApi.injectEndpoints({
       }),
       invalidatesTags: ['auth'],
     }),
+    changePassword: build.mutation<
+      IListApiResponse<ChangePassword>,
+      ChangePassword
+    >({
+      query: passwordData => ({
+        url: '/auth/change-password',
+        method: 'PATCH',
+        data: passwordData,
+      }),
+      invalidatesTags: ['auth'],
+    }),
   }),
 })
 
-export const { useLoginMutation, useSignupMutation } = authApiSlice
+export const {
+  useLoginMutation,
+  useSignupMutation,
+  useChangePasswordMutation,
+} = authApiSlice
 export default authApiSlice

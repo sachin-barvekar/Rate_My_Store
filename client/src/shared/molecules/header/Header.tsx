@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Header as HeaderSuite,
@@ -6,13 +6,14 @@ import {
   IconButton,
   Whisper,
   Popover,
+  Avatar,
 } from 'rsuite'
-import { CgProfile } from 'react-icons/cg'
+import LockIcon from '@rsuite/icons/Lock'
 import ExitIcon from '@rsuite/icons/Exit'
 import MenuIcon from '@rsuite/icons/Menu'
-
 import './header.scss'
 import useAuth from '../../../hooks/Auth'
+import ChangePasswordModal from '../../../pages/auth/password/ChangePassword'
 
 type Props = {
   onMenuClick: () => void
@@ -22,6 +23,10 @@ type Props = {
 const Header: React.FC<Props> = ({ onMenuClick, isMobile }) => {
   const { user } = useAuth()
   const name = user?.name ?? '-'
+  const [open, setOpen] = useState<boolean>(false)
+  const handleClose = () => setOpen(false)
+  const [changePasswordModalOpen, setChangePasswordModalOpen] =
+    useState<boolean>(false)
 
   return (
     <HeaderSuite className='header'>
@@ -41,25 +46,32 @@ const Header: React.FC<Props> = ({ onMenuClick, isMobile }) => {
           <Whisper
             trigger='click'
             placement='bottomEnd'
+            open={open}
+            onOpen={() => setOpen(true)}
+            onClose={() => setOpen(false)}
             speaker={
               <Popover full>
                 <div className='popover-content'>
                   <p className='popover-username'>{name}</p>
-                  <Nav.Item as={Link} to='/profile'>
-                    <CgProfile /> &nbsp;Profile
+                  <Nav.Item
+                    onClick={() => {
+                      setChangePasswordModalOpen(true)
+                      handleClose()
+                    }}>
+                    <LockIcon /> &nbsp; Change Password
                   </Nav.Item>
-                  <Nav.Item as={Link} to='/logout'>
+                  <Nav.Item as={Link} to='/logout' onClick={handleClose}>
                     <ExitIcon /> &nbsp; Logout
                   </Nav.Item>
                 </div>
               </Popover>
             }>
-            <span className='header__user-name'>{name}</span>
+            <Avatar size='sm' circle onClick={() => setOpen(true)} />
           </Whisper>
         ) : (
           <Nav.Menu title={name}>
-            <Nav.Item as={Link} to='/profile'>
-              <CgProfile /> &nbsp;Profile
+            <Nav.Item onClick={() => setChangePasswordModalOpen(true)}>
+              <LockIcon /> &nbsp;Change Password
             </Nav.Item>
             <Nav.Item as={Link} to='/logout'>
               <ExitIcon /> &nbsp; Logout
@@ -67,6 +79,10 @@ const Header: React.FC<Props> = ({ onMenuClick, isMobile }) => {
           </Nav.Menu>
         )}
       </Nav>
+      <ChangePasswordModal
+        isOpen={changePasswordModalOpen}
+        onClose={() => setChangePasswordModalOpen(false)}
+      />
     </HeaderSuite>
   )
 }

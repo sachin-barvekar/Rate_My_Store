@@ -15,7 +15,7 @@ export interface IStoreForm {
   [STORE_FORM_FIELDS.EMAIL]: string
   [STORE_FORM_FIELDS.ADDRESS]: string
   [STORE_FORM_FIELDS.STORE_OWNER]: string
-  [STORE_FORM_FIELDS.STORE_RATING]: Record<string, number> | undefined
+  [STORE_FORM_FIELDS.STORE_RATING]: Record<string, number> | undefined | number
 }
 
 export const getInitialStoreFormValueFromResponse = (
@@ -25,7 +25,7 @@ export const getInitialStoreFormValueFromResponse = (
   [STORE_FORM_FIELDS.EMAIL]: store?.email ?? '',
   [STORE_FORM_FIELDS.ADDRESS]: store?.address ?? '',
   [STORE_FORM_FIELDS.STORE_OWNER]: store?.storeOwnerId ?? '',
-  [STORE_FORM_FIELDS.STORE_RATING]: store?.rating ?? { ['']: 0 },
+  [STORE_FORM_FIELDS.STORE_RATING]: store?.myRating ?? 0,
 })
 
 export const defaultStoreFormValues: IStoreForm = {

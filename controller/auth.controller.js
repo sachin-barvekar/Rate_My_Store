@@ -93,19 +93,54 @@ exports.login = async (req, res) => {
     })
   }
 }
-
-exports.logout = async (req, res) => {
+exports.changePassword = async (req, res) => {
   try {
-    res.clearCookie('auth_token')
+    const userId = req.user.id
+    const { oldPassword, newPassword, confirmPassword } = req.body
+
+    if (!oldPassword || !newPassword || !confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: 'All fields are required.',
+      })
+    }
+
+    if (newPassword !== confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: 'New password and confirm password do not match.',
+      })
+    }
+
+    const user = await User.findById(userId)
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found.',
+      })
+    }
+
+    const isMatch = await bcrypt.compare(oldPassword, user.password)
+    if (!isMatch) {
+      return res.status(401).json({
+        success: false,
+        message: 'Old password is incorrect.',
+      })
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10)
+    user.password = hashedPassword
+    await user.save()
+
     return res.status(200).json({
       success: true,
-      message: 'Logged out successfully.',
+      message: 'Password changed successfully.',
     })
   } catch (error) {
-    console.error('Logout Error:', error)
+    console.error('Change Password Error:', error)
     return res.status(500).json({
       success: false,
-      message: 'Logout failed. Please try again.',
+      message: 'Failed to change password. Please try again.',
     })
   }
 }

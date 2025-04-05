@@ -1,7 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const { login, signup } = require('../controller/auth.controller')
+const {
+  login,
+  signup,
+  changePassword,
+} = require('../controller/auth.controller')
 const { isAdmin, auth, isStoreOwner } = require('../middleware/authMiddleware')
 const { getAllUsers, updateUser } = require('../controller/user.controller')
 const { dashboardCount } = require('../controller/dashboard.controller')
@@ -16,6 +20,7 @@ const {
 
 router.post('/auth/signup', signup)
 router.post('/auth/login', login)
+router.patch('/auth/change-password', auth, changePassword)
 
 router.get('/users', auth, getAllUsers)
 router.post('/user/add', auth, signup)

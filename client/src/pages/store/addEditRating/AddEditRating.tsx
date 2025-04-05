@@ -93,8 +93,8 @@ const AddEditRating: React.FC<Props> = ({ isOpen, onClose, ratingData }) => {
                         <Rate
                           color='yellow'
                           defaultValue={
-                            userId
-                              ? formikProps.values[STORE_RATING]?.[userId] ?? 0
+                            typeof initialValues.rating === 'number'
+                              ? initialValues.rating
                               : 0
                           }
                           size='lg'

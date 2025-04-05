@@ -29,7 +29,11 @@ const SideNav: FC<Props> = ({ isMobile, onClose, open }) => {
           </h3>
         </Drawer.Header>
         <Drawer.Body>
-          <Nav activeKey={activeKey} onSelect={setActiveKey} vertical>
+          <Nav
+            activeKey={activeKey}
+            onSelect={setActiveKey}
+            onClick={onClose}
+            vertical>
             {menuItems.map(({ id, name, link, icon: Icon, subMenu }) => (
               <NavItem
                 key={id}

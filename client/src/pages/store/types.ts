@@ -3,10 +3,12 @@ export interface Store {
   name?: string
   email?: string
   address?: string
-  rating?: Record<string, number>
+  rating?: Record<string, number> | undefined | number
   storeOwner?: string
   search?: string
   storeOwnerId?: string
+  myRating?: number | undefined
+  overallRating?: number
 }
 
 export interface StoreListParams {

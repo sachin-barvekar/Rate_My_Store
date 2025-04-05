@@ -24,10 +24,6 @@ const appRouter = () =>
           element: <Logout />,
         },
         {
-          path: '*',
-          element: <Navigate to='/auth' replace />,
-        },
-        {
           element: (
             <AuthGuard>
               <AuthLayout />
@@ -66,7 +62,15 @@ const appRouter = () =>
                 </RouteGuard>
               ),
             },
+            {
+              path: '*',
+              element: <Navigate to='/' replace />,
+            },
           ],
+        },
+        {
+          path: '*',
+          element: <Navigate to='/auth' replace />,
         },
       ],
     },

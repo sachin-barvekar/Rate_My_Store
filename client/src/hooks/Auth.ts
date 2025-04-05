@@ -97,15 +97,14 @@ const useAuth = (): AuthContextType => {
     hasLoggedOutRef.current = true
 
     try {
-      localStorage.removeItem('user')
-      localStorage.removeItem('token')
+      localStorage.clear()
       setUser(null)
       setToken(null)
+      setLoading(false)
       delete axios.defaults.headers.common['Authorization']
       notifySuccess('Logout successful.')
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.error('Logout failed. Please try again.')
+      console.error('Logout failed. Please try again.', error)
     }
   }, [])
 

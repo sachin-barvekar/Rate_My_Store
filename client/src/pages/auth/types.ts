@@ -10,3 +10,9 @@ export interface SignupRequest {
   address: string
   role: string
 }
+
+export interface ChangePassword {
+  oldPassword: string
+  newPassword: string
+  confirmPassword: string
+}

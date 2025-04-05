@@ -75,3 +75,53 @@ export const authValidationSchema = (type: 'login' | 'signup' | 'edit') => {
         : Yup.string().notRequired(),
   })
 }
+
+export enum CHANGE_PASSWORD_FIELDS {
+  OLD_PASSWORD = 'oldPassword',
+  NEW_PASSWORD = 'newPassword',
+  CONFIRM_PASSWORD = 'confirmPassword',
+}
+
+export interface IChangePasswordForm {
+  [CHANGE_PASSWORD_FIELDS.OLD_PASSWORD]: string
+  [CHANGE_PASSWORD_FIELDS.NEW_PASSWORD]: string
+  [CHANGE_PASSWORD_FIELDS.CONFIRM_PASSWORD]: string
+}
+export const defaultChangePasswordValues: IChangePasswordForm = {
+  [CHANGE_PASSWORD_FIELDS.OLD_PASSWORD]: '',
+  [CHANGE_PASSWORD_FIELDS.NEW_PASSWORD]: '',
+  [CHANGE_PASSWORD_FIELDS.CONFIRM_PASSWORD]: '',
+}
+
+export const changePasswordValidationSchema = () => {
+  return Yup.object().shape({
+    [CHANGE_PASSWORD_FIELDS.OLD_PASSWORD]: Yup.string().required(
+      'Old password is required',
+    ),
+
+    [CHANGE_PASSWORD_FIELDS.NEW_PASSWORD]: Yup.string()
+      .required('New password is required')
+      .min(8, 'Password must be at least 8 characters')
+      .max(16, 'Password cannot exceed 16 characters')
+      .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
+      .matches(
+        /[@$!%*?&]/,
+        'Password must contain at least one special character',
+      )
+      .test(
+        'not-same-as-old',
+        'New password must be different from old password',
+        function (value) {
+          const oldPassword = this.parent[CHANGE_PASSWORD_FIELDS.OLD_PASSWORD]
+          return value !== oldPassword
+        },
+      ),
+
+    [CHANGE_PASSWORD_FIELDS.CONFIRM_PASSWORD]: Yup.string()
+      .required('Confirm password is required')
+      .oneOf(
+        [Yup.ref(CHANGE_PASSWORD_FIELDS.NEW_PASSWORD)],
+        'Passwords must match',
+      ),
+  })
+}
