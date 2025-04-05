@@ -12,7 +12,7 @@ cd rate-my-store
 ### 2. Setup Environment Variables:
 PORT=8080
 
-DATABASE_URL=mongodb+srv://<username>:<password>@cluster0.qfy3fkr.mongodb.net/store_rating
+DATABASE_URL=<db_url>
 
 JWT_SECRET=<jwt_secret>
 
