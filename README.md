@@ -6,6 +6,7 @@ Follow the steps below to set up and run the project locally:
 
 ### 1. Clone the Repository:
 git clone [https://github.com/sachin-barvekar/Rate_My_Store.git](url)
+
 cd rate-my-store
 
 ### 2. Setup Environment Variables:
