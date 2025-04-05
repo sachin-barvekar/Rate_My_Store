@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 3000
 
 dbConnect()
 
-// CORS Configuration
 app.use(
   cors({
     origin: '*',
@@ -24,6 +23,13 @@ app.use(express.json())
 
 // API Routes
 app.use('/api/v1', userRoutes)
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const clientPath = path.join(__dirname, 'client', 'build')
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientPath, 'index.html'))
+})
 
 // Test Route
 app.get('/', (req, res) => {
