@@ -1,9 +1,12 @@
-const express = require('express')
-const dotenv = require('dotenv')
-const cors = require('cors')
-const cookieParser = require('cookie-parser')
-const dbConnect = require('./config/database.js')
-const userRoutes = require('./routes/user.js')
+import express from 'express'
+import dotenv from 'dotenv'
+import { dirname } from 'path'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import dbConnect from './config/database.js'
+import userRoutes from './routes/user.js'
+import cors from 'cors'
+import cookieParser from 'cookie-parser'
 
 dotenv.config()
 const app = express()
@@ -26,7 +29,8 @@ app.use('/api/v1', userRoutes)
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-const clientPath = path.join(__dirname, 'client', 'build')
+const clientPath = path.join(__dirname, 'client', 'dist')
+app.use(express.static(clientPath))
 app.get('*', (req, res) => {
   res.sendFile(path.join(clientPath, 'index.html'))
 })
