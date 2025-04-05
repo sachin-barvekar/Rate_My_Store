@@ -1,6 +1,4 @@
 # ⭐ Rate My Store
-
-# ⭐ Rate My Store
 **Rate My Store** is a role-based web application that allows users to rate stores from 1 to 5 stars. It supports a login system with different access levels for Admin, Users, and Store Owners. The goal is to provide meaningful feedback through ratings, helping store owners understand customer satisfaction.
 
 ## 🚀 Getting Started
