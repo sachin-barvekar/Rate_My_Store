@@ -11,8 +11,11 @@ cd rate-my-store
 
 ### 2. Setup Environment Variables:
 PORT=8080
+
 DATABASE_URL=mongodb+srv://<username>:<password>@cluster0.qfy3fkr.mongodb.net/store_rating
+
 JWT_SECRET=<jwt_secret>
+
 📁 In the client directory, create a .env file with:
 VITE_BASE_URL=http://localhost:8080/api/v1
 
@@ -21,6 +24,7 @@ VITE_BASE_URL=http://localhost:8080/api/v1
 npm install
 📦 Frontend (inside client folder):
 cd client
+
 npm install
 
 ### 4. Run the Project
