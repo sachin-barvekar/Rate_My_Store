@@ -49,6 +49,20 @@ const StoreApiSlice = storeApi.injectEndpoints({
       }),
       invalidatesTags: ['store'],
     }),
+    fetchStoreRatingsByOwner: build.query<
+      IListApiResponse<Store>,
+      IListApiRequest<Store>
+    >({
+      query: request => {
+        const params = getStorePaginationQueryParams(request)
+        return {
+          url: '/store/my-store-ratings',
+          method: 'GET',
+          params,
+        }
+      },
+      providesTags: ['store'],
+    }),
   }),
 })
 
@@ -57,4 +71,5 @@ export const {
   useCreateStoreMutation,
   useUpdateStoreMutation,
   useUpdateStoreRatingMutation,
+  useFetchStoreRatingsByOwnerQuery,
 } = StoreApiSlice

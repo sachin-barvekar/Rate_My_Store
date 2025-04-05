@@ -28,6 +28,13 @@ exports.createStore = async (req, res) => {
           'Invalid store owner. Only users with role "store_owner" can create a store.',
       })
     }
+    const existingStoreForOwner = await Store.findOne({ storeOwner })
+    if (existingStoreForOwner) {
+      return res.status(400).json({
+        success: false,
+        message: 'This user has already created a store.',
+      })
+    }
 
     const newStore = await Store.create({
       name,
@@ -202,5 +209,96 @@ exports.updateStoreRating = async (req, res) => {
   } catch (error) {
     console.error('Error updating store rating:', error)
     res.status(500).json({ success: true, message: 'Internal server error' })
+  }
+}
+
+exports.getStoreRatingsByOwner = async (req, res) => {
+  try {
+    const storeOwnerId = req.user.id
+    let { page = 0, size = 10 } = req.query
+    page = parseInt(page)
+    size = parseInt(size)
+
+    const limit = size === 0 ? 0 : size
+    const skip = page * size
+
+    const store = await Store.findOne({ storeOwner: storeOwnerId }).populate(
+      'rating.userId',
+      'name email address role',
+    )
+
+    if (!store) {
+      return res.status(404).json({ message: 'No store found for this owner' })
+    }
+
+    const totalElements = store.rating.length
+    const totalPages = size === 0 ? 1 : Math.ceil(totalElements / size)
+
+    const paginatedRatings = store.rating.slice(skip, skip + limit).map(r => ({
+      userId: r.userId._id,
+      username: r.userId.name,
+      useremail: r.userId.email,
+      useraddress: r.userId.address,
+      userrole: r.userId.role,
+      userratingValue: r.value,
+    }))
+
+    res.status(200).json({
+      content: paginatedRatings,
+      storeName: store.name,
+      storeId: store._id,
+      totalElements,
+      totalPages,
+      last: page + 1 === totalPages,
+      size,
+      number: page,
+      sort: {
+        sorted: false,
+        empty: paginatedRatings.length === 0,
+        unsorted: true,
+      },
+      numberOfElements: paginatedRatings.length,
+      first: page === 0,
+      empty: paginatedRatings.length === 0,
+    })
+  } catch (err) {
+    console.error('Error fetching store ratings:', err)
+    res.status(500).json({ message: 'Internal Server Error' })
+  }
+}
+
+exports.getAverageRatingByOwner = async (req, res) => {
+  try {
+    const storeOwnerId = req.user.id
+
+    const store = await Store.findOne({ storeOwner: storeOwnerId })
+
+    if (!store) {
+      return res.status(404).json({ message: 'No store found for this owner' })
+    }
+
+    const totalRatings = store.rating.length
+
+    if (totalRatings === 0) {
+      return res.status(200).json({
+        storeName: store.name,
+        storeId: store._id,
+        totalRatings: 0,
+        averageRating: 0,
+      })
+    }
+
+    const ratingSum = store.rating.reduce((acc, r) => acc + r.value, 0)
+    const averageRating = parseFloat((ratingSum / totalRatings).toFixed(2))
+
+    res.status(200).json({
+      storeName: store.name,
+      storeId: store._id,
+      totalRatings,
+      averageRating,
+    })
+  } catch (err) {
+    console.error('Error calculating average rating:', err)
+    res.status(500).json({ message: 'Server error' })
   }
 }

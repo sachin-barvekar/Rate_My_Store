@@ -7,7 +7,7 @@ const dashboardApi = createApi({
     baseUrl,
   }),
   reducerPath: 'dashboardApi',
-  tagTypes: ['admin'],
+  tagTypes: ['admin', 'store_owner'],
   endpoints: () => ({}),
 })
 

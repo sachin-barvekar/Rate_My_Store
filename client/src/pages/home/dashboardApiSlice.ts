@@ -12,7 +12,23 @@ const dashboardApiSlice = dashboardApi.injectEndpoints({
       }),
       providesTags: ['admin'],
     }),
+    storeDashboardCount: build.query<
+      {
+        totalRatings: number
+        averageRating: number
+        storeId: number
+        storeName: string
+      },
+      void
+    >({
+      query: () => ({
+        url: '/dashboard/store_owner',
+        method: 'GET',
+      }),
+      providesTags: ['store_owner'],
+    }),
   }),
 })
 
-export const { useAdminDashboardCountQuery } = dashboardApiSlice
+export const { useAdminDashboardCountQuery, useStoreDashboardCountQuery } =
+  dashboardApiSlice
